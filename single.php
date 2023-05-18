@@ -37,7 +37,11 @@
   </nav>
   <?php while (have_posts()) : the_post(); ?>
     <!-- Page Header-->
-    <header class="masthead" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/contact-bg.jpg')">
+    <?php
+    $id = get_post_thumbnail_id();
+    $img = wp_get_attachment_image_src($id);
+    ?>
+    <header class="masthead" style="background-image: url('<?php echo $img[0]; ?>')">
       <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="col-md-10 col-lg-8 col-xl-7">
@@ -57,6 +61,14 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="col-md-10 col-lg-8 col-xl-7">
             <?php the_content(); ?>
+            <dl>
+              <dt>価格</dt>
+              <?php $price = get_post_meta(get_the_ID(), '価格', true); ?>
+              <dd><?php echo number_format(get_field('価格')); ?>円</dd>
+              <dt>発売日</dt>
+              <?php $published = get_post_meta(get_the_ID(), '発売日', true); ?>
+              <dd><?php echo the_field('発売日'); ?></dd>
+            </dl>
           </div>
         </div>
       </div>
