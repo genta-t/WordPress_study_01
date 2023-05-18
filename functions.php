@@ -38,6 +38,14 @@ function init_func()
         'menu_position' => 5, //管理画面の左側のバーの表示順
         'menu_icon' => 'dashicons-cart', // アイコン選ぶ-> https://developer.wordpress.org/resource/dashicons/#analytics
     ]);
+
+    register_taxonomy('item_category', 'item', [ //register taxonomyでドキュメント
+        'labels' => [
+            'name' => '商品カテゴリー',
+        ],
+        'hierarchical' => true, //商品などはtrueにして親として紐づけることもある。投稿などはfalseで親として紐付けない。
+        'show_in_rest' => true,
+    ]);
 }
 
 add_action('init', 'init_func');
