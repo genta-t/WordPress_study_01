@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="<?php echo get_template_directory_uri(); ?>/css/styles.css" rel="stylesheet" />
+
   <?php wp_head(); ?>
 </head>
 
@@ -19,7 +20,7 @@
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
     <div class="container px-4 px-lg-5">
-      <a class="navbar-brand" href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
+      <a class="navbar-brand" href="index.html">Start Bootstrap</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -34,50 +35,30 @@
       </div>
     </div>
   </nav>
-  <!-- Page Header-->
-  <header class="masthead" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/home-bg.jpg')">
-    <div class="container position-relative px-4 px-lg-5">
-      <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-md-10 col-lg-8 col-xl-7">
-          <div class="site-heading">
-            <h1>Clean Blog</h1>
-            <span class="subheading">A Blog Theme by Start Bootstrap</span>
+  <?php while (have_posts()) : the_post(); ?>
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/contact-bg.jpg')">
+      <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+          <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="page-heading">
+              <h1><?php the_title(); ?></h1>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </header>
-  <!-- Main Content-->
-  <div class="container px-4 px-lg-5">
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-      <?php while (have_posts()) : the_post(); ?>
-        <div class="col-md-10 col-lg-8 col-xl-7">
-          <!-- Post preview-->
-          <div class="post-preview">
-            <a href="<?php the_permalink(); ?>">
-              <h2 class="post-title">
-                <?php the_title(); ?>
-              </h2>
-              <h3 class="post-subtitle">
-                <?php the_excerpt(); ?>
-              </h3>
-            </a>
-            <p class="post-meta">
-              Posted by
-              <?php the_author(); ?>
-              on <?php the_time('Y年m月d日'); ?>
-            </p>
+    </header>
+    <!-- Main Content-->
+    <main class="mb-4">
+      <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+          <div class="col-md-10 col-lg-8 col-xl-7">
+            <?php the_content(); ?>
           </div>
         </div>
-      <?php endwhile; ?>
-      <!-- Pager-->
-      <div class="d-flex justify-content-end mb-4">
-        <!-- <?php previous_posts_link(); ?>
-        <?php next_posts_link(); ?> -->
-        <?php echo paginate_links(); ?>
       </div>
-    </div>
-  </div>
+    </main>
+  <?php endwhile ?>
   <!-- Footer-->
   <footer class="border-top">
     <div class="container px-4 px-lg-5">
@@ -118,6 +99,12 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Core theme JS-->
   <script src="<?php echo get_template_directory_uri(); ?>/js/scripts.js"></script>
+  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+  <!-- * *                               SB Forms JS                               * *-->
+  <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+  <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
   <?php wp_footer(); ?>
 </body>
 
