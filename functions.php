@@ -28,7 +28,7 @@ function init_func()
             'menu_name' => '商品',
         ],
         'public' => true,
-        'has_active' => true,
+        'has_archive' => true,
         'hierarchical' => true, //商品などはtrueにして親として紐づけることもある。投稿などはfalseで親として紐付けない。
         'supports' => [
             'title',
